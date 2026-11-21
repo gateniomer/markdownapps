@@ -44,8 +44,9 @@ publishes `dist/` with GitHub Actions.
    `https://<user>.github.io/<repo>/`.
 
 The workflow derives the Vite base path from the repository name, so no config
-is needed for a project site. For a `<user>.github.io` repository or a custom
-domain, set the repository variable `BASE_PATH` to `/`
+is needed for a project site. A `<user>.github.io` repository, or a project with
+a `public/CNAME` custom domain, is served from `/` instead. You can also set the
+repository variable `BASE_PATH` to `/` explicitly
 (**Settings → Secrets and variables → Actions → Variables**).
 
 The same switch works locally:

@@ -27,13 +27,14 @@ jobs:
 
       - run: npm ci
 
-      # A project site lives at /<repo>/; a <user>.github.io site or a custom
-      # domain lives at /. Set the repository variable BASE_PATH to override.
+      # A project site lives at /<repo>/; a <user>.github.io site or a site with
+      # a public/CNAME custom domain lives at /. The BASE_PATH repository
+      # variable overrides either.
       - name: Resolve base path
         id: base
         run: |
           name="${GITHUB_REPOSITORY#*/}"
-          if [[ "$name" == *.github.io ]]; then
+          if [[ -f public/CNAME || "$name" == *.github.io ]]; then
             echo "value=/" >> "$GITHUB_OUTPUT"
           else
             echo "value=/$name/" >> "$GITHUB_OUTPUT"
